@@ -8,7 +8,8 @@
 #include <QKeyEvent>
 #include <QApplication>
 #include <iostream>
-//#include "Board.h"
+#include <vector>
+
 class Board;
 class Console;
 #include "BoggleWindow.h"
@@ -33,6 +34,7 @@ public:
     bool chosen;
     Console *console;
     Rank index;
+    std::vector<Rank> neibor;
 };
 
 #endif // CUBE_H

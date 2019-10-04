@@ -50,7 +50,7 @@ void Cube::inputLetter(){
 
 void Cube::mousePressEvent(QMouseEvent *event){
     if(chosen) return;
-    qDebug()<<this->label->text()<<" "<<"is clicked.";
+    //qDebug()<<this->label->text()<<" "<<"is clicked.";
     QCursor cursor;
     cursor.setShape(Qt::PointingHandCursor);
     QApplication::setOverrideCursor(cursor);

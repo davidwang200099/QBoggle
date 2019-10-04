@@ -8,18 +8,19 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-
+#include <QTimer>
 using namespace std;
 #define DEFAULT_SIZE 5
 
-#define LEGAL(x) ((((x)-size-1>=0)&&cubes[x-size-1]->chosen)||\
-                 (((x)-size>=0)&&cubes[x-size]->chosen)||\
-                 (((x)-size+1>=0)&&cubes[x-size+1]->chosen)||\
-                 (((x)-1>=0)&&cubes[x-1]->chosen)||\
-                 (((x)+1<size*size)&&cubes[x+1]->chosen)||\
-                 (((x)+size-1<size*size)&&cubes[x+size-1]->chosen)||\
-                 (((x)+size<size*size)&&cubes[x+size]->chosen)||\
-                 (((x)+size+1<size*size)&&cubes[x+size+1]->chosen))
+#define LEGAL(x) ((((x)>=0)&&((x)<=size*size))&& \
+                 ((((x)-size-1>=0)&&cubes[x-size-1]->chosen)|| \
+                 (((x)-size>=0)&&cubes[x-size]->chosen)|| \
+                 (((x)-size+1>=0)&&cubes[x-size+1]->chosen)|| \
+                 (((x)-1>=0)&&cubes[x-1]->chosen)|| \
+                 (((x)+1<size*size)&&cubes[x+1]->chosen)|| \
+                 (((x)+size-1<size*size)&&cubes[x+size-1]->chosen)|| \
+                 (((x)+size<size*size)&&cubes[x+size]->chosen)|| \
+                 (((x)+size+1<size*size)&&cubes[x+size+1]->chosen)))
 
 
 #ifndef Rank
@@ -47,6 +48,7 @@ public:
     void autoPlay();
     void DFS();
     void dfs(Rank r);
+    bool legal(Rank r);
     //bool installEventFilter(QWidget *w);
 
     int size;
@@ -56,9 +58,12 @@ public:
     inline int index(int i, int j) const { return i * size + j; }
     static const QString STANDARD_CUBES[16];
     static const QString BIG_BOGGLE_CUBES[25];
-    static const int delta[8];
+    static const int delta_0[5];
+    static const int delta_4[5];
+    static const int delta_default[8];
     QList<Cube *> playerinput;
     BoggleWindow *w;
+    QTimer delayTimer;
     //QString inputWord;
 };
 
