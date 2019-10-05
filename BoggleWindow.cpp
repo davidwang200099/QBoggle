@@ -1,8 +1,10 @@
 #include "BoggleWindow.h"
+#include "lexicon.h"
+
 #include <QFile>
 #include <QHBoxLayout>
 #include <QTextEdit>
-#include <QDebug>
+#include <iostream>
 
 BoggleWindow::BoggleWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +19,6 @@ BoggleWindow::BoggleWindow(QWidget *parent)
 
     me->setGeometry(20, 20, 230, 300);
     board->setGeometry(230, 0, 300, 300);
-    board->w=this;
     computer->setGeometry(800 - 50 - 200, 20, 230, 300);
     console->setGeometry(30, 320, 740, 260);
 
@@ -25,10 +26,15 @@ BoggleWindow::BoggleWindow(QWidget *parent)
     if (!qFile.open(QIODevice::ReadOnly)) {
         throw new std::runtime_error("Resource file not found!");
     }
-    lex=new Lexicon(qFile);
+    Lexicon lex(qFile);
+
+    /*
+    for (std::string s: lex) {
+        std::cout << s << std::endl;
+    }
+    */
     console->write("Welcome to the game Boggle!\n");
 }
-
 
 BoggleWindow::~BoggleWindow()
 {

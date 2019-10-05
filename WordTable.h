@@ -13,8 +13,11 @@ public:
     void addWord(QString word);
 
     void reset();
+signals:
 
+public slots:
 
+private:
     int row;
     int col;
     int maxCol;

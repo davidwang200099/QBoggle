@@ -2,7 +2,7 @@
 #define WORDLISTWIDGET_H
 
 #include "WordTable.h"
-#include <QLabel>
+
 #include <QWidget>
 
 class WordListWidget : public QWidget
@@ -13,8 +13,11 @@ public:
     void addScore(int s);
     void addWord(QString word);
     void reset();
+signals:
 
-    QLabel *scoreLabel;
+public slots:
+
+private:
     QString label;
     QList<QString> words;
     int score;

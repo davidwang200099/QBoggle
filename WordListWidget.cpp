@@ -12,7 +12,7 @@ WordListWidget::WordListWidget(QWidget *parent, QString label) : QWidget(parent)
     QHBoxLayout *headLayout = new QHBoxLayout();
 
     QLabel *nameLabel = new QLabel(this);
-    scoreLabel = new QLabel(this);
+    QLabel *scoreLabel = new QLabel(this);
     QFont font = nameLabel->font();
     font.setPointSize(20);
     nameLabel->setFont(font);
